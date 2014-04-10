@@ -1,0 +1,15 @@
+= @asset.title
+br
+= @asset.label
+br
+= @asset.notes
+br
+= @asset.received
+br
+= @asset.completed
+br
+= @asset.shipped
+br 
+= link_to 'All Assets', assets_path
+= link_to 'Edit', edit_asset_path(@asset)
+
