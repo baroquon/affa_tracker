@@ -2,13 +2,13 @@ h2 Edit Asset
  
 = form_for :asset, url: asset_path(@asset), method: :patch do |f|
   - if @asset.errors.any?
-    div.error_explanation
+    div.error
       h2 
-        = pluralize(@article.errors.count, "error") 
+        = pluralize(@asset.errors.count, "error") 
         | prohibited this asset from being saved:
       ul
-        - @article.errors.full_messages.each do |message|
-          li= message
+        - @asset.errors.full_messages.each do |msg|
+          li= msg
   p
     = f.label :title
     = f.text_field :title

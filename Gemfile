@@ -34,3 +34,4 @@ end
 
 gem 'slim'
 gem 'slim-rails'
+gem 'rspec'
