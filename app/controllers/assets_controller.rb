@@ -27,7 +27,7 @@ class AssetsController < ApplicationController
   end
   
   def update
-    @asset = Asset.find(asset_params)
+    @asset = Asset.find(params[:id])
     
     if @asset.update(asset_params)
       redirect_to @asset

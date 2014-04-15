@@ -34,3 +34,5 @@ end
 
 gem 'slim'
 gem 'slim-rails'
+gem 'rspec'
+gem 'bcrypt-ruby', '3.1.2'
