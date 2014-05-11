@@ -6,28 +6,41 @@
 </table>
 
 <select id="which_team">
-<option value=0>Arizona</option>
-<option value=1>Atlanta</option>
-<option value=2>Baltimore</option>
 </select>
 <button type="button" onclick="loadJSON()">Update Details </button>
-
+<button type="button" onclick="optionsList()">Load Options</button>
 <script>
-function loadJSON()
-{
    var data_file = "/teams.json";
    var http_request = new XMLHttpRequest();
+function loadJSON()
+{
    http_request = new XMLHttpRequest();
    http_request.onreadystatechange  = function(){
       if (http_request.readyState == 4  )
       {
 	// Javascript function JSON.parse to parse JSON data
 	var jsonObj = JSON.parse(http_request.responseText);
-        var teamSelector = document.getElementById("which_team").value;
+        var teamSelector = document.getElementById('which_team').value;
 	// jsonObj variable now contains the data structure and can
 	// be accessed as jsonObj.name and jsonObj.country.
 	document.getElementById("Abbv").innerHTML =  jsonObj[teamSelector].abbreviation;
 	document.getElementById("team_id").innerHTML = jsonObj[teamSelector].team_id;
+      }
+   }
+   http_request.open("GET", data_file, true);
+   http_request.send();
+}
+function optionsList()
+{
+   http_request = new XMLHttpRequest();
+   http_request.onreadystatechange  = function(){
+      if (http_request.readyState == 4  )
+      {
+	var jsonObj = JSON.parse(http_request.responseText);
+	for (i = 0; i < jsonObj.length; i++){
+          var currentTeam = jsonObj[i].abbreviation;
+	  $('#which_team').append($('<option>', {value : i }).text(currentTeam));
+	}
       }
    }
    http_request.open("GET", data_file, true);
